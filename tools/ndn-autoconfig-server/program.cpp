@@ -71,7 +71,7 @@ Program::enableHubData(const FaceUri& hubFaceUri)
 
 
   auto data = make_shared<Data>(Name(HUB_DATA_NAME).appendVersion());
-  data->setFreshnessPeriod(time::hours(1));
+  data->setFreshnessPeriod(time::milliseconds(5));
   data->setContent(makeBinaryBlock(tlv::nfd::Uri,
                                    reinterpret_cast<const uint8_t*>(uri.data()), uri.size()));
   m_keyChain.sign(*data);
